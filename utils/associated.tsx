@@ -4,7 +4,7 @@ import {
   SYSVAR_RENT_PUBKEY,
   TransactionInstruction,
 } from '@solana/web3.js'
-import { TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 
 export const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID: PublicKey = new PublicKey(
   'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',
@@ -18,7 +18,7 @@ export async function findAssociatedTokenAddress(
     await PublicKey.findProgramAddress(
       [
         walletAddress.toBuffer(),
-        TOKEN_PROGRAM_ID.toBuffer(),
+        TOKEN_2022_PROGRAM_ID.toBuffer(),
         tokenMintAddress.toBuffer(),
       ],
       SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
@@ -62,7 +62,7 @@ export async function createAssociatedTokenAccount(
       isWritable: false,
     },
     {
-      pubkey: TOKEN_PROGRAM_ID,
+      pubkey: TOKEN_2022_PROGRAM_ID,
       isSigner: false,
       isWritable: false,
     },

@@ -13,9 +13,9 @@ import { AssetAccount } from '@utils/uiTypes/assets'
 import InstructionForm, { InstructionInput } from './FormCreator'
 import { InstructionInputType } from './inputInstructionType'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import * as yup from 'yup'
 import { PublicKey, TransactionInstruction } from '@solana/web3.js'
@@ -97,8 +97,8 @@ const CloseMultipleTokenAccounts = ({
         ) {
           const createAtaInstruction =
             Token.createAssociatedTokenAccountInstruction(
-              ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-              TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+              ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+              TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
               mintPK, // mint
               receiverAddress, // ata
               destinationAccount, // owner of token account
@@ -110,7 +110,7 @@ const CloseMultipleTokenAccounts = ({
 
         if (!amount.isZero()) {
           const transferIx = Token.createTransferInstruction(
-            TOKEN_PROGRAM_ID,
+            TOKEN_2022_PROGRAM_ID,
             sourceAccount!,
             receiverAddress,
             tokenAccount.extensions.token!.account.owner,
@@ -123,7 +123,7 @@ const CloseMultipleTokenAccounts = ({
         }
 
         const closeInstruction = Token.createCloseAccountInstruction(
-          TOKEN_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
           tokenAccount.pubkey,
           new PublicKey(form!.solRentDestination),
           tokenAccount.extensions.token!.account.owner,

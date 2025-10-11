@@ -11,9 +11,9 @@ import {
 
 import type { ConnectionContext } from 'utils/connection'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   MintInfo,
 } from '@solana/spl-token'
 import { Connection } from '@solana/web3.js'
@@ -74,8 +74,8 @@ export const tryGetAta = async (
 ) => {
   //we do ATA validation
   const ata = await Token.getAssociatedTokenAddress(
-    ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-    TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+    ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+    TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
     mint, // mint
     owner, // owner
     true,

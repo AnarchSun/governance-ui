@@ -4,10 +4,10 @@ import {
   serializeInstructionToBase64,
 } from '@solana/spl-governance'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   NATIVE_MINT,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import {
   PublicKey,
@@ -43,15 +43,15 @@ export const deposit = async (
   // If the lp token account does not exist, add it to the pre-requisite instructions
   if (!vaultOwnershipAccount) {
     const address = await Token.getAssociatedTokenAddress(
-      ASSOCIATED_TOKEN_PROGRAM_ID,
-      TOKEN_PROGRAM_ID,
+      ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       form.strategy.vaultAccounts.lpTokenMint,
       owner,
       true,
     )
     const createAtaIx = Token.createAssociatedTokenAccountInstruction(
-      ASSOCIATED_TOKEN_PROGRAM_ID,
-      TOKEN_PROGRAM_ID,
+      ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       form.strategy.vaultAccounts.lpTokenMint,
       address,
       owner,
@@ -67,8 +67,8 @@ export const deposit = async (
 
   if (form.amount && treasuryAssetAccount.isSol) {
     poolMintATA = await Token.getAssociatedTokenAddress(
-      ASSOCIATED_TOKEN_PROGRAM_ID,
-      TOKEN_PROGRAM_ID,
+      ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       NATIVE_MINT,
       owner,
       true,
@@ -80,8 +80,8 @@ export const deposit = async (
     ) {
       prerequisiteInstructions.push(
         Token.createAssociatedTokenAccountInstruction(
-          ASSOCIATED_TOKEN_PROGRAM_ID,
-          TOKEN_PROGRAM_ID,
+          ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
           NATIVE_MINT,
           poolMintATA,
           owner,

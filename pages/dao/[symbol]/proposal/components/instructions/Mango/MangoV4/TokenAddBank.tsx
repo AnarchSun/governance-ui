@@ -13,7 +13,7 @@ import { AccountType, AssetAccount } from '@utils/uiTypes/assets'
 import InstructionForm, { InstructionInput } from '../../FormCreator'
 import { InstructionInputType } from '../../inputInstructionType'
 import UseMangoV4 from '../../../../../../../../hooks/useMangoV4'
-import { TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 import useWalletOnePointOh from '@hooks/useWalletOnePointOh'
 import ProgramSelector from '@components/Mango/ProgramSelector'
 import useProgramSelector from '@components/Mango/useProgramSelector'
@@ -87,7 +87,7 @@ const TokenAddBank = ({
           mint: token.mint,
           payer: form.governedAccount.extensions.transferAddress,
           rent: SYSVAR_RENT_PUBKEY,
-          tokenProgram: TOKEN_PROGRAM_ID,
+          tokenProgram: TOKEN_2022_PROGRAM_ID,
           systemProgram: SYSTEM_PROGRAM_ID,
           existingBank: banks![banks!.length - 1].publicKey,
           mintInfo: mintInfo!.publicKey,

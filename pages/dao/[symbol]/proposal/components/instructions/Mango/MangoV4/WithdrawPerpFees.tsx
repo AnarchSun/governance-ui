@@ -14,8 +14,8 @@ import { InstructionInputType } from '../../inputInstructionType'
 import UseMangoV4 from '../../../../../../../../hooks/useMangoV4'
 import useWalletOnePointOh from '@hooks/useWalletOnePointOh'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
-  TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   Token,
 } from '@solana/spl-token'
 import { TransactionInstruction } from '@solana/web3.js'
@@ -88,8 +88,8 @@ const WithdrawPerpFees = ({
       )![0]!
 
       const ataAddress = await Token.getAssociatedTokenAddress(
-        ASSOCIATED_TOKEN_PROGRAM_ID,
-        TOKEN_PROGRAM_ID,
+        ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
         bank.mint,
         form.governedAccount.extensions.transferAddress!,
         true,
@@ -100,8 +100,8 @@ const WithdrawPerpFees = ({
         // generate the instruction for creating the ATA
         prerequisiteInstructions.push(
           Token.createAssociatedTokenAccountInstruction(
-            ASSOCIATED_TOKEN_PROGRAM_ID,
-            TOKEN_PROGRAM_ID,
+            ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+            TOKEN_2022_PROGRAM_ID,
             bank.mint,
             ataAddress,
             form.governedAccount.extensions.transferAddress!,
@@ -115,7 +115,7 @@ const WithdrawPerpFees = ({
         .accounts({
           group: mangoGroup!.publicKey,
           admin: form.governedAccount.extensions.transferAddress,
-          tokenProgram: TOKEN_PROGRAM_ID,
+          tokenProgram: TOKEN_2022_PROGRAM_ID,
           perpMarket: currentPerp.publicKey,
           bank: bank.publicKey,
           vault: bank.vault,

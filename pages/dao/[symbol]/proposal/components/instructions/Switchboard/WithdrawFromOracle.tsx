@@ -19,8 +19,8 @@ import {
 import useLegacyConnectionContext from '@hooks/useLegacyConnectionContext'
 import { Keypair, PublicKey, TransactionInstruction } from '@solana/web3.js'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
-  TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   Token,
 } from '@solana/spl-token'
 import { WSOL_MINT } from '@components/instructions/tools'
@@ -76,8 +76,8 @@ const WithdrawFromOracle = ({
       )
 
       const wsolAddress = await Token.getAssociatedTokenAddress(
-        ASSOCIATED_TOKEN_PROGRAM_ID,
-        TOKEN_PROGRAM_ID,
+        ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
         new PublicKey(WSOL_MINT),
         form.governedAccount.extensions.transferAddress!,
         true,
@@ -87,8 +87,8 @@ const WithdrawFromOracle = ({
       if (!wsolAccount) {
         const createWsolacc =
           await Token.createAssociatedTokenAccountInstruction(
-            ASSOCIATED_TOKEN_PROGRAM_ID,
-            TOKEN_PROGRAM_ID,
+            ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+            TOKEN_2022_PROGRAM_ID,
             new PublicKey(WSOL_MINT),
             wsolAddress,
             form.governedAccount.extensions.transferAddress!,
@@ -106,7 +106,7 @@ const WithdrawFromOracle = ({
         },
       )
       const closeWSOLAccountIx = Token.createCloseAccountInstruction(
-        TOKEN_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
         wsolAddress,
         form.governedAccount.extensions.transferAddress!,
         form.governedAccount.extensions.transferAddress!,

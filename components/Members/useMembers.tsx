@@ -1,7 +1,7 @@
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import { PublicKey } from '@solana/web3.js'
 import { BN_ZERO } from '@solana/spl-governance'
@@ -137,8 +137,8 @@ export const useMembersQuery = () => {
             .map((x) => x.walletAddress)
           for (const walletAddress of communityTokenRecordsWallets) {
             const ata = await Token.getAssociatedTokenAddress(
-              ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-              TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+              ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+              TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
               realm.account.communityMint, // mint
               new PublicKey(walletAddress), // owner
               true,

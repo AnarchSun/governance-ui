@@ -4,7 +4,7 @@ import queryClient from './queryClient'
 import asFindable from '@utils/queries/asFindable'
 import { useConnection } from '@solana/wallet-adapter-react'
 import useWalletOnePointOh from '@hooks/useWalletOnePointOh'
-import { TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 import { parseTokenAccountData } from '@utils/parseTokenAccountData'
 import { TokenAccount } from '@utils/tokens'
 import { useVsrClient } from 'VoterWeightPlugins'
@@ -20,7 +20,7 @@ async function getOwnedTokenAccounts(
   publicKey: PublicKey,
 ): Promise<TokenProgramAccount<TokenAccount>[]> {
   const result = await connection.getTokenAccountsByOwner(publicKey, {
-    programId: TOKEN_PROGRAM_ID,
+    programId: TOKEN_2022_PROGRAM_ID,
   })
 
   return result.value.map((r) => {
@@ -38,7 +38,7 @@ async function tryGetTokenAccount(
   try {
     const result = await connection.getAccountInfo(publicKey)
 
-    if (!result?.owner.equals(TOKEN_PROGRAM_ID)) {
+    if (!result?.owner.equals(TOKEN_2022_PROGRAM_ID)) {
       return undefined
     }
 

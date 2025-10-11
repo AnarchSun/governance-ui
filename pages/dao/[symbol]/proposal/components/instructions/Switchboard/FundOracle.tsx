@@ -27,8 +27,8 @@ import {
 } from '@solana/web3.js'
 import { notify } from '@utils/notifications'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
-  TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   Token,
 } from '@solana/spl-token'
 import { WSOL_MINT } from '@components/instructions/tools'
@@ -126,8 +126,8 @@ const SwitchboardFundOracle = ({
         })
       }
       const wsolAddress = await Token.getAssociatedTokenAddress(
-        ASSOCIATED_TOKEN_PROGRAM_ID,
-        TOKEN_PROGRAM_ID,
+        ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
         new PublicKey(WSOL_MINT),
         form.governedAccount.extensions.transferAddress!,
         true,
@@ -137,8 +137,8 @@ const SwitchboardFundOracle = ({
       if (!wsolAccount) {
         const createWsolacc =
           await Token.createAssociatedTokenAccountInstruction(
-            ASSOCIATED_TOKEN_PROGRAM_ID,
-            TOKEN_PROGRAM_ID,
+            ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+            TOKEN_2022_PROGRAM_ID,
             new PublicKey(WSOL_MINT),
             wsolAddress,
             form.governedAccount.extensions.transferAddress!,

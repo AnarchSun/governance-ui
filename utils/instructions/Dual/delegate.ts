@@ -33,8 +33,8 @@ import {
   getRegistrarPDA,
 } from 'VoteStakeRegistry/sdk/accounts'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
-  TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   Token,
 } from '@solana/spl-token'
 import { getMintCfgIdx, tryGetVoter } from 'VoteStakeRegistry/sdk/api'
@@ -218,8 +218,8 @@ export async function getVoteDepositInstruction({
     const existingVoter = await tryGetVoter(voter, vsrClient)
 
     const voterATAPk = await Token.getAssociatedTokenAddress(
-      ASSOCIATED_TOKEN_PROGRAM_ID,
-      TOKEN_PROGRAM_ID,
+      ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       communityMintPk,
       voter,
       true,
@@ -303,8 +303,8 @@ export async function getVoteDepositInstruction({
           depositMint: communityMintPk,
           rent: SYSVAR_RENT_PUBKEY,
           systemProgram: systemProgram,
-          tokenProgram: TOKEN_PROGRAM_ID,
-          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+          tokenProgram: TOKEN_2022_PROGRAM_ID,
+          associatedTokenProgram: ASSOCIATED_TOKEN_2022_PROGRAM_ID,
           vault: voterATAPk,
         })
         .instruction()
@@ -323,7 +323,7 @@ export async function getVoteDepositInstruction({
         vault: voterATAPk,
         depositToken: form.delegateToken.pubkey,
         depositAuthority: daoWallet,
-        tokenProgram: TOKEN_PROGRAM_ID,
+        tokenProgram: TOKEN_2022_PROGRAM_ID,
       })
       .instruction()
     instructions.push(depositInstruction)

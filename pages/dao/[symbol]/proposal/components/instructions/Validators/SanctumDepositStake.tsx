@@ -31,8 +31,8 @@ import {
 import Input from '@components/inputs/Input'
 import { tryGetAta } from '@utils/validations'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
-  TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   Token,
 } from '@solana/spl-token'
 import useWalletOnePointOh from '@hooks/useWalletOnePointOh'
@@ -184,8 +184,8 @@ const SanctumDepositStake = ({
       new PublicKey(form.stakePool),
     )
     const ataAddress = await Token.getAssociatedTokenAddress(
-      ASSOCIATED_TOKEN_PROGRAM_ID,
-      TOKEN_PROGRAM_ID,
+      ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       stakePool.account.data.poolMint,
       form.governedTokenAccount.pubkey,
       true,
@@ -199,8 +199,8 @@ const SanctumDepositStake = ({
     if (!ataAccount) {
       prequsiteInstructions.push(
         Token.createAssociatedTokenAccountInstruction(
-          ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-          TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+          ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+          TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
           stakePool.account.data.poolMint, // mint
           ataAddress, // ata
           form.governedTokenAccount.pubkey, // owner of token account

@@ -13,7 +13,7 @@ import useLegacyConnectionContext from '@hooks/useLegacyConnectionContext'
 import {Raydium} from '@raydium-io/raydium-sdk-v2'
 import { BN } from '@coral-xyz/anchor'
 import { associatedAddress } from '@coral-xyz/anchor/dist/cjs/utils/token'
-import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { ASSOCIATED_TOKEN_2022_PROGRAM_ID, TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 import { WSOL_MINT_PK } from '@components/instructions/tools'
 import GovernedAccountSelect from '../../GovernedAccountSelect'
 import { useLegacyVoterWeight } from '@hooks/queries/governancePower'
@@ -97,9 +97,9 @@ const CollectVestedTokens = ({
         { pubkey: baseVault, isSigner: false, isWritable: true },
         { pubkey: walletAta, isSigner: false, isWritable: true },
         { pubkey: mintA, isSigner: false, isWritable: false },
-        { pubkey: TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
+        { pubkey: TOKEN_2022_PROGRAM_ID, isSigner: false, isWritable: false },
         { pubkey: SystemProgram.programId, isSigner: false, isWritable: false },
-        { pubkey: ASSOCIATED_TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
+        { pubkey: ASSOCIATED_TOKEN_2022_PROGRAM_ID, isSigner: false, isWritable: false },
       ]
 
       const claimVestingInstruction: TransactionInstruction = {

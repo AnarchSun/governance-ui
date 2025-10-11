@@ -20,7 +20,7 @@ import useWalletOnePointOh from '@hooks/useWalletOnePointOh'
 import { ManifestClient, Market, UiWrapper } from '@cks-systems/manifest-sdk'
 import useLegacyConnectionContext from '@hooks/useLegacyConnectionContext'
 import tokenPriceService from '@utils/services/tokenPrice'
-import { TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 import { WRAPPED_SOL_MINT } from '@metaplex-foundation/js'
 import {
   createAssociatedTokenAccountIdempotentInstruction,
@@ -195,8 +195,8 @@ const PlaceLimitOrder = ({
           wrapper: wrapperPk!,
           owner,
           payer: owner,
-          baseTokenProgram: TOKEN_PROGRAM_ID,
-          quoteTokenProgram: TOKEN_PROGRAM_ID,
+          baseTokenProgram: TOKEN_2022_PROGRAM_ID,
+          quoteTokenProgram: TOKEN_2022_PROGRAM_ID,
         },
         {
           isBid: isBid,
@@ -211,19 +211,19 @@ const PlaceLimitOrder = ({
         baseMint,
         owner,
         true,
-        TOKEN_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
       )
       const traderTokenAccountQuote = getAssociatedTokenAddressSync(
         quoteMint,
         owner,
         true,
-        TOKEN_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
       )
       const platformAta = getAssociatedTokenAddressSync(
         quoteMint,
         FEE_WALLET,
         true,
-        TOKEN_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
       )
 
       const [platformAtaAccount, baseAtaAccount, quoteAtaAccount] =
@@ -247,7 +247,7 @@ const PlaceLimitOrder = ({
             platformAta,
             FEE_WALLET,
             quoteMint,
-            TOKEN_PROGRAM_ID,
+            TOKEN_2022_PROGRAM_ID,
           )
         prerequisiteInstructions.push(platformAtaCreateIx)
       }
@@ -258,7 +258,7 @@ const PlaceLimitOrder = ({
             traderTokenAccountQuote,
             owner,
             quoteMint,
-            TOKEN_PROGRAM_ID,
+            TOKEN_2022_PROGRAM_ID,
           )
         prerequisiteInstructions.push(quoteAtaCreateIx)
       }
@@ -269,7 +269,7 @@ const PlaceLimitOrder = ({
             traderTokenAccountBase,
             owner,
             baseMint,
-            TOKEN_PROGRAM_ID,
+            TOKEN_2022_PROGRAM_ID,
           )
         prerequisiteInstructions.push(baseAtaCreateIx)
       }
@@ -287,8 +287,8 @@ const PlaceLimitOrder = ({
             vaultQuote: getVaultAddress(market.address, quoteMint),
             mintBase: baseMint,
             mintQuote: quoteMint,
-            tokenProgramBase: TOKEN_PROGRAM_ID,
-            tokenProgramQuote: TOKEN_PROGRAM_ID,
+            tokenProgramBase: TOKEN_2022_PROGRAM_ID,
+            tokenProgramQuote: TOKEN_2022_PROGRAM_ID,
             platformTokenAccount: platformAta,
           },
           {

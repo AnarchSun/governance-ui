@@ -1,7 +1,7 @@
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import { Connection, PublicKey, Transaction } from '@solana/web3.js'
 import type { ConnectionContext } from 'utils/connection'
@@ -17,8 +17,8 @@ export async function createATA(
   feePayer: PublicKey,
 ) {
   const ata = await Token.getAssociatedTokenAddress(
-    ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-    TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+    ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+    TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
     mintPubkey, // mint
     owner, // owner
     true,
@@ -27,8 +27,8 @@ export async function createATA(
   const transaction = new Transaction()
   transaction.add(
     Token.createAssociatedTokenAccountInstruction(
-      ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-      TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+      ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+      TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
       mintPubkey, // mint
       ata, // ata
       owner, // owner of token account
@@ -72,8 +72,8 @@ export async function getATA({
     )
     if (!existingAta) {
       const ata = await Token.getAssociatedTokenAddress(
-        ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-        TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+        ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+        TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
         mintPK, // mint
         receiverAddress, // owner
         true,
@@ -96,8 +96,8 @@ export function findATAAddrSync(
 ): [PublicKey, number] {
   const seeds = [
     wallet.toBuffer(),
-    TOKEN_PROGRAM_ID.toBuffer(),
+    TOKEN_2022_PROGRAM_ID.toBuffer(),
     mintAddress.toBuffer(),
   ]
-  return PublicKey.findProgramAddressSync(seeds, ASSOCIATED_TOKEN_PROGRAM_ID)
+  return PublicKey.findProgramAddressSync(seeds, ASSOCIATED_TOKEN_2022_PROGRAM_ID)
 }

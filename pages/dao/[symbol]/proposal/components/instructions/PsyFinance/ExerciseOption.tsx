@@ -20,9 +20,9 @@ import {
 import { PublicKey, TransactionInstruction } from '@solana/web3.js'
 import { getATA } from '@utils/ataTools'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import { BN } from 'bn.js'
 import useGovernanceAssets from '@hooks/useGovernanceAssets'
@@ -106,8 +106,8 @@ const ExerciseOption = ({
     if (needToCreateAta) {
       prerequisiteInstructions.push(
         Token.createAssociatedTokenAccountInstruction(
-          ASSOCIATED_TOKEN_PROGRAM_ID,
-          TOKEN_PROGRAM_ID,
+          ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
           selectedOptionAccount.account.underlyingAssetMint,
           underlyingDestination,
           form.optionTokenAccount!.extensions.token!.account.owner,
@@ -129,7 +129,7 @@ const ExerciseOption = ({
         underlyingAssetDest: underlyingDestination,
         quoteAssetPool: selectedOptionAccount.account.quoteAssetPool,
         quoteAssetSrc: form.quoteAssetAccount.extensions.token!.account.address,
-        tokenProgram: TOKEN_PROGRAM_ID,
+        tokenProgram: TOKEN_2022_PROGRAM_ID,
       },
     })
 

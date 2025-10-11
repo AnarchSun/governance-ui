@@ -7,8 +7,8 @@ import NFTAccountSelect from './NFTAccountSelect'
 import useWalletOnePointOh from '@hooks/useWalletOnePointOh'
 import { notify } from '@utils/notifications'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
-  TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   Token,
 } from '@solana/spl-token'
 import { createATA } from '@utils/ataTools'
@@ -102,8 +102,8 @@ const DepositNFTFromWallet = ({ additionalBtns }: { additionalBtns?: any }) => {
         )
 
         const ataPk = await Token.getAssociatedTokenAddress(
-          ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-          TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+          ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+          TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
           nftMint, // mint
           owner!, // owner
           true,

@@ -6,9 +6,9 @@ import {
 } from '@solana/web3.js'
 import { withCreateTokenOwnerRecord } from '@solana/spl-governance'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import {
   getRegistrarPDA,
@@ -71,10 +71,10 @@ export const withCreateNewDeposit = async ({
     await client.program.provider.connection.getAccountInfo(mintPk)
   const tokenProgram = mintInfo?.owner.equals(TOKEN_2022_PROGRAM_ID)
     ? TOKEN_2022_PROGRAM_ID
-    : TOKEN_PROGRAM_ID
+    : TOKEN_2022_PROGRAM_ID
 
   const voterATAPk = await Token.getAssociatedTokenAddress(
-    ASSOCIATED_TOKEN_PROGRAM_ID,
+    ASSOCIATED_TOKEN_2022_PROGRAM_ID,
     tokenProgram,
     mintPk,
     voter,
@@ -147,7 +147,7 @@ export const withCreateNewDeposit = async ({
         rent: SYSVAR_RENT_PUBKEY,
         systemProgram: systemProgram,
         tokenProgram,
-        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_TOKEN_2022_PROGRAM_ID,
         vault: voterATAPk,
       })
       .instruction()

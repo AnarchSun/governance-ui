@@ -1,4 +1,4 @@
-import { TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 import {
   PublicKey,
   SystemProgram,
@@ -51,7 +51,7 @@ const getDepositKeys = async (
     },
     { pubkey: reserveAccount, isSigner: false, isWritable: true },
     { pubkey: mintAuthority, isSigner: false, isWritable: false },
-    { pubkey: TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
+    { pubkey: TOKEN_2022_PROGRAM_ID, isSigner: false, isWritable: false },
     { pubkey: SystemProgram.programId, isSigner: false, isWritable: false },
   ]
 }

@@ -1,8 +1,8 @@
 import { BN, Program, Provider, web3 } from '@coral-xyz/anchor'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import {
   AccountMeta,
@@ -172,8 +172,8 @@ export const initializeOptionInstruction = async (
   const mintFeePerContract = feeAmountPerContract(underlyingAmountPerContract)
   if (mintFeePerContract.gtn(0)) {
     const mintFeeKey = await Token.getAssociatedTokenAddress(
-      ASSOCIATED_TOKEN_PROGRAM_ID,
-      TOKEN_PROGRAM_ID,
+      ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       underlyingMint,
       FEE_OWNER_KEY,
       true,
@@ -197,8 +197,8 @@ export const initializeOptionInstruction = async (
   const exerciseFeePerContract = feeAmountPerContract(quoteAmountPerContract)
   if (exerciseFeePerContract.gtn(0)) {
     const exerciseFeeKey = await Token.getAssociatedTokenAddress(
-      ASSOCIATED_TOKEN_PROGRAM_ID,
-      TOKEN_PROGRAM_ID,
+      ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       quoteMint,
       FEE_OWNER_KEY,
       true,
@@ -236,11 +236,11 @@ export const initializeOptionInstruction = async (
         underlyingAssetMint: underlyingMint,
         underlyingAssetPool: underlyingAssetPoolKey,
         writerTokenMint: writerMintKey,
-        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_TOKEN_2022_PROGRAM_ID,
         clock: SYSVAR_CLOCK_PUBKEY,
         rent: SYSVAR_RENT_PUBKEY,
         systemProgram: SystemProgram.programId,
-        tokenProgram: TOKEN_PROGRAM_ID,
+        tokenProgram: TOKEN_2022_PROGRAM_ID,
       },
       instructions: instructions.length ? instructions : undefined,
       remainingAccounts,
@@ -273,8 +273,8 @@ const getOrAddAssociatedTokenAccountTx = async (
   }
 
   return Token.createAssociatedTokenAccountInstruction(
-    ASSOCIATED_TOKEN_PROGRAM_ID,
-    TOKEN_PROGRAM_ID,
+    ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+    TOKEN_2022_PROGRAM_ID,
     mintKey,
     associatedAddress,
     owner,

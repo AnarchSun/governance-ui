@@ -18,7 +18,7 @@ import {
 } from '@solana/spl-governance'
 import { ProgramAccount } from '@solana/spl-governance'
 import GovernedAccountSelect from '../GovernedAccountSelect'
-import { TOKEN_PROGRAM_ID, Token, u64 } from '@solana/spl-token'
+import { TOKEN_2022_PROGRAM_ID, Token, u64 } from '@solana/spl-token'
 import { validateInstruction } from '@utils/instructionTools'
 
 const BurnTokens = ({
@@ -89,7 +89,7 @@ const BurnTokens = ({
       )
 
       const burnIx = Token.createBurnInstruction(
-        TOKEN_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
         mintPK,
         tokenAccount,
         sourceWallet,

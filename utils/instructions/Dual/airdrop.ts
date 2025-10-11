@@ -11,7 +11,7 @@ import { Airdrop, AirdropConfigureContext } from '@dual-finance/airdrop'
 import { BN } from '@coral-xyz/anchor'
 import { getMintNaturalAmountFromDecimalAsBN } from '@tools/sdk/units'
 import { TransactionInstruction } from '@solana/web3.js'
-import { TOKEN_PROGRAM_ID, Token } from '@solana/spl-token'
+import { TOKEN_2022_PROGRAM_ID, Token } from '@solana/spl-token'
 
 interface AirdropArgs {
   connection: ConnectionContext
@@ -72,7 +72,7 @@ export async function getMerkleAirdropInstruction({
       airdropTransactionContext.airdropState,
     )
     const transferIx = Token.createTransferInstruction(
-      TOKEN_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       form.treasury.pubkey,
       vaultAddress,
       form.treasury.extensions.token!.account.owner!,

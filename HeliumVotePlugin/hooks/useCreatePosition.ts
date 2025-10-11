@@ -1,5 +1,5 @@
 import { BN } from '@coral-xyz/anchor'
-import { MintLayout, Token, TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { MintLayout, Token, TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 import { withCreateTokenOwnerRecord } from '@solana/spl-governance'
 import useWalletDeprecated from '@hooks/useWalletDeprecated'
 import {
@@ -73,13 +73,13 @@ export const useCreatePosition = () => {
             newAccountPubkey: mintKeypair.publicKey,
             lamports: mintRent,
             space: MintLayout.span,
-            programId: TOKEN_PROGRAM_ID,
+            programId: TOKEN_2022_PROGRAM_ID,
           }),
         )
 
         instructions.push(
           Token.createInitMintInstruction(
-            TOKEN_PROGRAM_ID,
+            TOKEN_2022_PROGRAM_ID,
             mintKeypair.publicKey,
             0,
             position,

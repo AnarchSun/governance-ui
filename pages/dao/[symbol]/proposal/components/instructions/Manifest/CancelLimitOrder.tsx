@@ -8,7 +8,7 @@ import { Governance, ProgramAccount, serializeInstructionToBase64, SYSTEM_PROGRA
 import { AssetAccount } from '@utils/uiTypes/assets'
 import useWalletOnePointOh from '@hooks/useWalletOnePointOh'
 import { Market, UiWrapper } from '@cks-systems/manifest-sdk'
-import { TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 import { WRAPPED_SOL_MINT } from '@metaplex-foundation/js'
 import { createAssociatedTokenAccountIdempotentInstruction, createCloseAccountInstruction, getAssociatedTokenAddressSync } from '@solana/spl-token-new'
 import { getVaultAddress } from '@cks-systems/manifest-sdk/dist/cjs/utils'
@@ -80,18 +80,18 @@ const CancelLimitOrder = () => {
 
     const needToCreateWSolAcc = baseMint.equals(WRAPPED_SOL_MINT) || quoteMint.equals(WRAPPED_SOL_MINT)
 
-    const traderTokenAccountBase = getAssociatedTokenAddressSync(baseMint, owner, true, TOKEN_PROGRAM_ID)
-    const traderTokenAccountQuote = getAssociatedTokenAddressSync(quoteMint, owner, true, TOKEN_PROGRAM_ID)
-    const platformAta = getAssociatedTokenAddressSync(quoteMint, FEE_WALLET, true, TOKEN_PROGRAM_ID)
+    const traderTokenAccountBase = getAssociatedTokenAddressSync(baseMint, owner, true, TOKEN_2022_PROGRAM_ID)
+    const traderTokenAccountQuote = getAssociatedTokenAddressSync(quoteMint, owner, true, TOKEN_2022_PROGRAM_ID)
+    const platformAta = getAssociatedTokenAddressSync(quoteMint, FEE_WALLET, true, TOKEN_2022_PROGRAM_ID)
 
     if (!platformAta) {
-      prerequisiteInstructions.push(createAssociatedTokenAccountIdempotentInstruction(wallet.publicKey, platformAta, FEE_WALLET, quoteMint, TOKEN_PROGRAM_ID))
+      prerequisiteInstructions.push(createAssociatedTokenAccountIdempotentInstruction(wallet.publicKey, platformAta, FEE_WALLET, quoteMint, TOKEN_2022_PROGRAM_ID))
     }
     if (!traderTokenAccountQuote) {
-      prerequisiteInstructions.push(createAssociatedTokenAccountIdempotentInstruction(wallet.publicKey, traderTokenAccountQuote, owner, quoteMint, TOKEN_PROGRAM_ID))
+      prerequisiteInstructions.push(createAssociatedTokenAccountIdempotentInstruction(wallet.publicKey, traderTokenAccountQuote, owner, quoteMint, TOKEN_2022_PROGRAM_ID))
     }
     if (!traderTokenAccountBase) {
-      prerequisiteInstructions.push(createAssociatedTokenAccountIdempotentInstruction(wallet.publicKey, traderTokenAccountBase, owner, baseMint, TOKEN_PROGRAM_ID))
+      prerequisiteInstructions.push(createAssociatedTokenAccountIdempotentInstruction(wallet.publicKey, traderTokenAccountBase, owner, baseMint, TOKEN_2022_PROGRAM_ID))
     }
 
     const mint = isBid ? quoteMint : baseMint
@@ -104,7 +104,7 @@ const CancelLimitOrder = () => {
       vault: getVaultAddress(market.address, mint),
       mint,
       systemProgram: SYSTEM_PROGRAM_ID,
-      tokenProgram: TOKEN_PROGRAM_ID,
+      tokenProgram: TOKEN_2022_PROGRAM_ID,
       manifestProgram: MANIFEST_PROGRAM_ID
     }, {params: {clientOrderId: order.clientOrderId}})
 
@@ -121,8 +121,8 @@ const CancelLimitOrder = () => {
       vaultQuote: getVaultAddress(market.address, quoteMint),
       mintBase: baseMint,
       mintQuote: quoteMint,
-      tokenProgramBase: TOKEN_PROGRAM_ID,
-      tokenProgramQuote: TOKEN_PROGRAM_ID,
+      tokenProgramBase: TOKEN_2022_PROGRAM_ID,
+      tokenProgramQuote: TOKEN_2022_PROGRAM_ID,
       platformTokenAccount: platformAta
     }, {params: {feeMantissa: 10 ** 9 * 0.0001, platformFeePercent: 100}})
 

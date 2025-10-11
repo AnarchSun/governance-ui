@@ -2,8 +2,8 @@ import { useAsync } from 'react-async-hook'
 import { useRealmQuery } from './queries/realm'
 import useWalletOnePointOh from './useWalletOnePointOh'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
-  TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   Token,
 } from '@solana/spl-token'
 import { useTokenAccountByPubkeyQuery } from './queries/tokenAccount'
@@ -21,8 +21,8 @@ const useUserGovTokenAccountQuery = (role: 'community' | 'council') => {
       walletPk &&
       mint &&
       Token.getAssociatedTokenAddress(
-        ASSOCIATED_TOKEN_PROGRAM_ID,
-        TOKEN_PROGRAM_ID,
+        ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
         mint,
         walletPk,
         true,

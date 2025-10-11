@@ -1,8 +1,8 @@
 import { AssetType, Token } from '@models/treasury/Asset';
 import { Wallet } from '@models/treasury/Wallet';
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
-  TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token';
 
 import { Token as SplToken } from '@solana/spl-token';
@@ -418,15 +418,15 @@ export const useSavePlans = (
     }
 
     const userAta = await SplToken.getAssociatedTokenAddress(
-      ASSOCIATED_TOKEN_PROGRAM_ID,
-      TOKEN_PROGRAM_ID,
+      ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       new PublicKey(reserve.collateralMintAddress),
       wallet.publicKey,
     );
 
     const walletAta = await SplToken.getAssociatedTokenAddress(
-      ASSOCIATED_TOKEN_PROGRAM_ID,
-      TOKEN_PROGRAM_ID,
+      ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       new PublicKey(reserve.collateralMintAddress),
       new PublicKey(realmsWalletAddress),
       true,
@@ -447,7 +447,7 @@ export const useSavePlans = (
     );
 
     const transferIx = SplToken.createTransferInstruction(
-      TOKEN_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       userAta,
       walletAta,
       wallet.publicKey,

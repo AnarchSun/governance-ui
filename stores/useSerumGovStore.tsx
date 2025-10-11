@@ -1,6 +1,6 @@
 import { getAssociatedTokenAddress } from '@blockworks-foundation/mango-v4'
 import * as anchor from '@coral-xyz/anchor'
-import { TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 import {
   Connection,
   PublicKey,
@@ -520,7 +520,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
               gsrmMint: gsrmMint,
               ownerGsrmAccount: ownerGsrmAccount,
               clock: SYSVAR_CLOCK_PUBKEY,
-              tokenProgram: TOKEN_PROGRAM_ID,
+              tokenProgram: TOKEN_2022_PROGRAM_ID,
               systemProgram: SystemProgram.programId,
             })
             .instruction()
@@ -590,7 +590,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
                 srmVault,
                 ownerSrmAccount,
                 clock: SYSVAR_CLOCK_PUBKEY,
-                tokenProgram: TOKEN_PROGRAM_ID,
+                tokenProgram: TOKEN_2022_PROGRAM_ID,
                 systemProgram: SystemProgram.programId,
               })
               .instruction()
@@ -638,7 +638,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
                 msrmVault,
                 ownerMsrmAccount,
                 clock: SYSVAR_CLOCK_PUBKEY,
-                tokenProgram: TOKEN_PROGRAM_ID,
+                tokenProgram: TOKEN_2022_PROGRAM_ID,
                 systemProgram: SystemProgram.programId,
               })
               .instruction()
@@ -688,7 +688,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
           gsrmMint: gsrmMint,
           ownerGsrmAccount: ownerGsrmAccount,
           clock: SYSVAR_CLOCK_PUBKEY,
-          tokenProgram: TOKEN_PROGRAM_ID,
+          tokenProgram: TOKEN_2022_PROGRAM_ID,
           systemProgram: SystemProgram.programId,
         })
         .instruction()
@@ -727,7 +727,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
             srmVault,
             ownerSrmAccount,
             clock: SYSVAR_CLOCK_PUBKEY,
-            tokenProgram: TOKEN_PROGRAM_ID,
+            tokenProgram: TOKEN_2022_PROGRAM_ID,
             systemProgram: SystemProgram.programId,
           })
           .instruction()
@@ -752,7 +752,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
             msrmVault,
             ownerMsrmAccount,
             clock: SYSVAR_CLOCK_PUBKEY,
-            tokenProgram: TOKEN_PROGRAM_ID,
+            tokenProgram: TOKEN_2022_PROGRAM_ID,
             systemProgram: SystemProgram.programId,
           })
           .instruction()
@@ -805,7 +805,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
               lockedAccount: lockedAccount.address,
               redeemTicket: redeemTicket,
               clock: SYSVAR_CLOCK_PUBKEY,
-              tokenProgram: TOKEN_PROGRAM_ID,
+              tokenProgram: TOKEN_2022_PROGRAM_ID,
               systemProgram: SystemProgram.programId,
             })
             .transaction()
@@ -860,7 +860,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
           lockedAccount: lockedAccount.address,
           redeemTicket: redeemTicket,
           clock: SYSVAR_CLOCK_PUBKEY,
-          tokenProgram: TOKEN_PROGRAM_ID,
+          tokenProgram: TOKEN_2022_PROGRAM_ID,
           systemProgram: SystemProgram.programId,
         })
         .instruction()
@@ -907,7 +907,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
             vestAccount: vestAccount.address,
             redeemTicket: redeemTicket,
             clock: SYSVAR_CLOCK_PUBKEY,
-            tokenProgram: TOKEN_PROGRAM_ID,
+            tokenProgram: TOKEN_2022_PROGRAM_ID,
             systemProgram: SystemProgram.programId,
           })
           .transaction()
@@ -962,7 +962,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
           vestAccount: vestAccount.address,
           redeemTicket: redeemTicket,
           clock: SYSVAR_CLOCK_PUBKEY,
-          tokenProgram: TOKEN_PROGRAM_ID,
+          tokenProgram: TOKEN_2022_PROGRAM_ID,
           systemProgram: SystemProgram.programId,
         })
         .instruction()
@@ -1060,7 +1060,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
             lockedAccount,
             claimTicket: claimTicket,
             clock: SYSVAR_CLOCK_PUBKEY,
-            tokenProgram: TOKEN_PROGRAM_ID,
+            tokenProgram: TOKEN_2022_PROGRAM_ID,
             systemProgram: SystemProgram.programId,
           })
           .instruction()
@@ -1085,7 +1085,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
             lockedAccount,
             claimTicket: claimTicket,
             clock: SYSVAR_CLOCK_PUBKEY,
-            tokenProgram: TOKEN_PROGRAM_ID,
+            tokenProgram: TOKEN_2022_PROGRAM_ID,
             systemProgram: SystemProgram.programId,
           })
           .instruction()
@@ -1157,7 +1157,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
             config: get().config,
             srmVault,
             clock: SYSVAR_CLOCK_PUBKEY,
-            tokenProgram: TOKEN_PROGRAM_ID,
+            tokenProgram: TOKEN_2022_PROGRAM_ID,
             systemProgram: SystemProgram.programId,
           })
           .instruction()
@@ -1182,7 +1182,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
             vestAccount,
             claimTicket: claimTicket,
             clock: SYSVAR_CLOCK_PUBKEY,
-            tokenProgram: TOKEN_PROGRAM_ID,
+            tokenProgram: TOKEN_2022_PROGRAM_ID,
             systemProgram: SystemProgram.programId,
           })
           .instruction()
@@ -1280,7 +1280,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
               lockedAccount,
               claimTicket,
               clock: SYSVAR_CLOCK_PUBKEY,
-              tokenProgram: TOKEN_PROGRAM_ID,
+              tokenProgram: TOKEN_2022_PROGRAM_ID,
               systemProgram: SystemProgram.programId,
             })
             .instruction()
@@ -1302,7 +1302,7 @@ const useSerumGovStore = create<SerumGovStore>((set, get) => ({
               lockedAccount,
               claimTicket,
               clock: SYSVAR_CLOCK_PUBKEY,
-              tokenProgram: TOKEN_PROGRAM_ID,
+              tokenProgram: TOKEN_2022_PROGRAM_ID,
               systemProgram: SystemProgram.programId,
             })
             .instruction()

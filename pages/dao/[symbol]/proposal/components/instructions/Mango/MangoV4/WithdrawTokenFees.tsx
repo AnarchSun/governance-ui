@@ -14,8 +14,8 @@ import { InstructionInputType } from '../../inputInstructionType'
 import UseMangoV4 from '../../../../../../../../hooks/useMangoV4'
 import useWalletOnePointOh from '@hooks/useWalletOnePointOh'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
-  TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   Token,
 } from '@solana/spl-token'
 import { PublicKey, TransactionInstruction } from '@solana/web3.js'
@@ -89,8 +89,8 @@ const AdminTokenWithdrawTokenFees = ({
 
       for (const bank of banks) {
         const ataAddress = await Token.getAssociatedTokenAddress(
-          ASSOCIATED_TOKEN_PROGRAM_ID,
-          TOKEN_PROGRAM_ID,
+          ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
           bank.mint,
           form.governedAccount.extensions.transferAddress!,
           true,
@@ -101,8 +101,8 @@ const AdminTokenWithdrawTokenFees = ({
           // generate the instruction for creating the ATA
           prerequisiteInstructions.push(
             Token.createAssociatedTokenAccountInstruction(
-              ASSOCIATED_TOKEN_PROGRAM_ID,
-              TOKEN_PROGRAM_ID,
+              ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+              TOKEN_2022_PROGRAM_ID,
               bank.mint,
               ataAddress,
               form.governedAccount.extensions.transferAddress!,
@@ -116,7 +116,7 @@ const AdminTokenWithdrawTokenFees = ({
           .accounts({
             group: mangoGroup!.publicKey,
             admin: form.governedAccount.extensions.transferAddress,
-            tokenProgram: TOKEN_PROGRAM_ID,
+            tokenProgram: TOKEN_2022_PROGRAM_ID,
             bank: bank.publicKey,
             vault: bank.vault,
             tokenAccount: ataAddress,
@@ -129,7 +129,7 @@ const AdminTokenWithdrawTokenFees = ({
           additionalSerializedInstructions.push(
             serializeInstructionToBase64(
               Token.createCloseAccountInstruction(
-                TOKEN_PROGRAM_ID,
+                TOKEN_2022_PROGRAM_ID,
                 ataAddress,
                 form.governedAccount.extensions.transferAddress!,
                 form.governedAccount.extensions.transferAddress!,

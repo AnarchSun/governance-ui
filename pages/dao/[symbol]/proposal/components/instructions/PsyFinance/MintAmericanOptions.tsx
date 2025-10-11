@@ -14,10 +14,10 @@ import {
   UiInstruction,
 } from '@utils/uiTypes/proposalCreationTypes'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   MintInfo,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import { BN } from 'bn.js'
 import BigNumber from 'bignumber.js'
@@ -145,8 +145,8 @@ const MintAmericanOptions = ({
       if (needToCreateAta) {
         prerequisiteInstructions.push(
           Token.createAssociatedTokenAccountInstruction(
-            ASSOCIATED_TOKEN_PROGRAM_ID,
-            TOKEN_PROGRAM_ID,
+            ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+            TOKEN_2022_PROGRAM_ID,
             optionMintKey!,
             currentAddress,
             form.underlyingAccount!.extensions.token!.account.owner,
@@ -171,8 +171,8 @@ const MintAmericanOptions = ({
       if (needToCreateAta) {
         prerequisiteInstructions.push(
           Token.createAssociatedTokenAccountInstruction(
-            ASSOCIATED_TOKEN_PROGRAM_ID,
-            TOKEN_PROGRAM_ID,
+            ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+            TOKEN_2022_PROGRAM_ID,
             writerMintKey!,
             currentAddress,
             form.underlyingAccount!.extensions.token!.account.owner,
@@ -194,7 +194,7 @@ const MintAmericanOptions = ({
         writerTokenMint: writerMintKey!,
         mintedWriterTokenDest: writerDestination,
         optionMarket: optionKey,
-        tokenProgram: TOKEN_PROGRAM_ID,
+        tokenProgram: TOKEN_2022_PROGRAM_ID,
       },
     })
 

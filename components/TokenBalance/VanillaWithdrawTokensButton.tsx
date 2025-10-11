@@ -1,7 +1,6 @@
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
   Token,
-  TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_PROGRAM_ID,
 } from '@solana/spl-token'
 import { PublicKey, TransactionInstruction } from '@solana/web3.js'
 import BN from 'bn.js'
@@ -40,6 +39,8 @@ import { fetchTokenAccountByPubkey } from '@hooks/queries/tokenAccount'
 import { useVotingClients } from '@hooks/useVotingClients'
 import { sendTransactionsV3, SequenceType } from '@utils/sendTransactions'
 import { useState } from 'react'
+import { TOKEN_2022_PROGRAM_ADDRESS } from "@solana-program/token-2022"
+
 
 // TODO make this have reasonable props
 // TODO, also just refactor it
@@ -71,7 +72,6 @@ const VanillaWithdrawTokensButton = ({
     realmTokenAccount,
     councilTokenAccount,
     toManyCommunityOutstandingProposalsForUser,
-    toManyCouncilOutstandingProposalsForUse,
   } = useRealm()
 
   const depositTokenRecord =
@@ -234,7 +234,7 @@ const VanillaWithdrawTokensButton = ({
 
       const ataPk = await Token.getAssociatedTokenAddress(
         ASSOCIATED_TOKEN_PROGRAM_ID,
-        TOKEN_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ADDRESS,
         depositMint!,
         wallet!.publicKey!,
         true,
@@ -243,8 +243,8 @@ const VanillaWithdrawTokensButton = ({
 
       if (!ata.found) {
         const ataIx = Token.createAssociatedTokenAccountInstruction(
-          ASSOCIATED_TOKEN_PROGRAM_ID,
-          TOKEN_PROGRAM_ID,
+          ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ADDRESS,
           depositMint!,
           ataPk,
           wallet!.publicKey!,

@@ -10,7 +10,7 @@ import {
   ProposalState,
   pubkeyFilter,
   serializeInstructionToBase64,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   VoteRecord,
   withDepositGoverningTokens,
   withRelinquishVote,
@@ -189,7 +189,7 @@ const WithdrawFromDAO = ({
       mint,
       form.governedAccount.extensions.transferAddress!,
       true,
-      TOKEN_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
     )
 
     const createaAta = createAssociatedTokenAccountIdempotentInstruction(

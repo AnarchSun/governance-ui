@@ -9,7 +9,7 @@ import {
   ProgramAccount,
   pubkeyFilter,
   serializeInstructionToBase64,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   withRelinquishVote,
 } from '@solana/spl-governance'
 import { PublicKey, TransactionInstruction } from '@solana/web3.js'
@@ -103,7 +103,7 @@ const RelinquishDaoVote = ({
       mint,
       form.governedAccount.extensions.transferAddress!,
       true,
-      TOKEN_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
     )
 
     const createaAta = createAssociatedTokenAccountIdempotentInstruction(

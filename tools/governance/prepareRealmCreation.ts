@@ -12,7 +12,7 @@ import {
   MintMaxVoteWeightSource,
   MintMaxVoteWeightSourceType,
   SetRealmAuthorityAction,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   VoteThresholdType,
   VoteTipping,
   WalletSigner,
@@ -411,7 +411,7 @@ export async function prepareRealmCreation({
   )
   if (transferCommunityMintAuthority) {
     const ix = Token.createSetAuthorityInstruction(
-      TOKEN_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       communityMintPk,
       nativeTreasuryAddress,
       'MintTokens',
@@ -420,7 +420,7 @@ export async function prepareRealmCreation({
     )
     if (existingCommunityMint?.freezeAuthority) {
       const freezeMintAuthorityPassIx = Token.createSetAuthorityInstruction(
-        TOKEN_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
         communityMintPk,
         nativeTreasuryAddress,
         'FreezeAccount',
@@ -438,7 +438,7 @@ export async function prepareRealmCreation({
     transferCouncilMintAuthority
   ) {
     const ix = Token.createSetAuthorityInstruction(
-      TOKEN_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       councilMintPk,
       nativeTreasuryAddress,
       'MintTokens',
@@ -447,7 +447,7 @@ export async function prepareRealmCreation({
     )
     if (existingCouncilMint?.freezeAuthority) {
       const freezeMintAuthorityPassIx = Token.createSetAuthorityInstruction(
-        TOKEN_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
         councilMintPk,
         nativeTreasuryAddress,
         'FreezeAccount',

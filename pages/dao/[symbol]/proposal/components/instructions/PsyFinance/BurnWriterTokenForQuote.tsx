@@ -21,9 +21,9 @@ import {
 import { PublicKey, TransactionInstruction } from '@solana/web3.js'
 import { getATA } from '@utils/ataTools'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import { BN } from 'bn.js'
 
@@ -91,8 +91,8 @@ const BurnWriterTokenForQuote = ({
       if (needToCreateAta) {
         prerequisiteInstructions.push(
           Token.createAssociatedTokenAccountInstruction(
-            ASSOCIATED_TOKEN_PROGRAM_ID,
-            TOKEN_PROGRAM_ID,
+            ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+            TOKEN_2022_PROGRAM_ID,
             optionAccount.account.quoteAssetMint,
             currentAddress,
             form.writerTokenAccount!.extensions.token!.account.owner,
@@ -111,7 +111,7 @@ const BurnWriterTokenForQuote = ({
         writerTokenSrc: form.writerTokenAccount.extensions.token!.publicKey,
         quoteAssetPool: optionAccount.account.quoteAssetPool,
         writerQuoteDest: quoteDestination,
-        tokenProgram: TOKEN_PROGRAM_ID,
+        tokenProgram: TOKEN_2022_PROGRAM_ID,
       },
     })
 

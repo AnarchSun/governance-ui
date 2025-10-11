@@ -6,7 +6,7 @@ import { Keypair, TransactionInstruction } from '@solana/web3.js'
 import { approveTokenTransfer } from '@utils/tokens'
 import useSelectedRealmPubkey from '@hooks/selectedRealm/useSelectedRealmPubkey'
 import { withDepositGoverningTokens } from '@solana/spl-governance'
-import { ASSOCIATED_TOKEN_PROGRAM_ID, Token } from '@solana/spl-token'
+import { ASSOCIATED_TOKEN_2022_PROGRAM_ID, Token } from '@solana/spl-token'
 import { TOKEN_2022_PROGRAM_ID } from '@solana/spl-token-new' // <-- ici
 import BN from 'bn.js'
 import { fetchProgramVersion } from '@hooks/queries/useProgramVersionQuery'
@@ -37,7 +37,7 @@ export const useDepositCallback = (
 
             // ✅ ici on utilise TOKEN_2022_PROGRAM_ID
             const userAtaPk = await Token.getAssociatedTokenAddress(
-                ASSOCIATED_TOKEN_PROGRAM_ID,
+                ASSOCIATED_TOKEN_2022_PROGRAM_ID,
                 TOKEN_2022_PROGRAM_ID,
                 mint,
                 walletPk, // owner

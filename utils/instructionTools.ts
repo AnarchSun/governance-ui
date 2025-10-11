@@ -1,6 +1,6 @@
 import { serializeInstructionToBase64 } from '@solana/spl-governance'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   Token,
   u64,
 } from '@solana/spl-token'
@@ -122,8 +122,8 @@ export async function getTransferInstruction({
     if (!isAtaExist) {
       prerequisiteInstructions.push(
         Token.createAssociatedTokenAccountInstruction(
-          ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-          isToken2022 ? TOKEN_2022_PROGRAM_ID :   TOKEN_2022_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+          ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+          isToken2022 ? TOKEN_2022_PROGRAM_ID :   TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
           mintPK, // mint
           ataAddress, // ata
           destinationAccount, // owner of token account
@@ -245,8 +245,8 @@ export async function getBatchTransferInstruction({
       if (!isAtaExist) {
         prerequisiteInstructions.push(
           Token.createAssociatedTokenAccountInstruction(
-            ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-            isToken2022 ? TOKEN_2022_PROGRAM_ID: TOKEN_2022_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+            ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+            isToken2022 ? TOKEN_2022_PROGRAM_ID: TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
             mintPK, // mint
             ataAddress, // ata
             destinationAccount, // owner of token account
@@ -443,8 +443,8 @@ export async function getMintInstruction({
     if (needToCreateAta) {
       prerequisiteInstructions.push(
         Token.createAssociatedTokenAccountInstruction(
-          ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-            TOKEN_2022_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+          ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+            TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
           mintPK, // mint
           receiverAddress, // ata
           destinationAccount, // owner of token account
@@ -529,7 +529,7 @@ export async function getConvertToMsolInstruction({
       if (needToCreateAta && wallet?.publicKey) {
         prerequisiteInstructions.push(
           Token.createAssociatedTokenAccountInstruction(
-            ASSOCIATED_TOKEN_PROGRAM_ID,
+            ASSOCIATED_TOKEN_2022_PROGRAM_ID,
               TOKEN_2022_PROGRAM_ID,
             mSolMint,
             destinationAccount,
@@ -621,7 +621,7 @@ export async function getConvertToStSolInstruction({
       if (needToCreateAta && wallet?.publicKey) {
         prerequisiteInstructions.push(
           Token.createAssociatedTokenAccountInstruction(
-            ASSOCIATED_TOKEN_PROGRAM_ID,
+            ASSOCIATED_TOKEN_2022_PROGRAM_ID,
               TOKEN_2022_PROGRAM_ID,
             config.stSolMint,
             associatedStSolAccount,

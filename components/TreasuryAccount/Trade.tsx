@@ -23,7 +23,7 @@ import { notify } from '@utils/notifications'
 import { useRouter } from 'next/router'
 import useCreateProposal from '@hooks/useCreateProposal'
 import useQueryContext from '@hooks/useQueryContext'
-import { ASSOCIATED_TOKEN_PROGRAM_ID, MintInfo, Token } from '@solana/spl-token'
+import { ASSOCIATED_TOKEN_2022_PROGRAM_ID, MintInfo, Token } from '@solana/spl-token'
 import { InstructionDataWithHoldUpTime } from 'actions/createProposal'
 import { AssetAccount } from '@utils/uiTypes/assets'
 import { TokenAccount, TokenProgramAccount } from '@utils/tokens'
@@ -285,7 +285,7 @@ const Trade: React.FC<TradeProps> = ({ tokenAccount }) => {
             const prerequisiteInstructions: web3.TransactionInstruction[] = []
             // Use tokenAccount.extensions.token.account.owner for owner
             const aTADepositAddress = await Token.getAssociatedTokenAddress(
-                ASSOCIATED_TOKEN_PROGRAM_ID,
+                ASSOCIATED_TOKEN_2022_PROGRAM_ID,
                 TOKEN_2022_PROGRAM_ID,
                 new web3.PublicKey(destinationToken.address),
                 tokenAccount.extensions.token.account.owner,
@@ -295,7 +295,7 @@ const Trade: React.FC<TradeProps> = ({ tokenAccount }) => {
                 await connection.connection.getAccountInfo(aTADepositAddress)
             if (!depositAccountInfo) {
                 const createAtaIx = Token.createAssociatedTokenAccountInstruction(
-                    ASSOCIATED_TOKEN_PROGRAM_ID,
+                    ASSOCIATED_TOKEN_2022_PROGRAM_ID,
                     TOKEN_2022_PROGRAM_ID,
                     new PublicKey(destinationToken.address),
                     aTADepositAddress,

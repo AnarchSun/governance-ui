@@ -5,7 +5,7 @@ import BN from 'bn.js'
 import { getMintDecimalAmountFromNatural } from '@tools/sdk/units'
 import tokenPriceService from '@utils/services/tokenPrice'
 import { TokenInstruction } from '@solendprotocol/solend-sdk'
-import { AuthorityType, TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { AuthorityType, TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 import { struct, u8 } from 'buffer-layout'
 import { publicKey } from '@coral-xyz/borsh'
 import { decodeTransferCheckedInstruction } from '@solana/spl-token-new'
@@ -111,9 +111,9 @@ export const SPL_TOKEN_INSTRUCTIONS = {
           new TransactionInstruction({
             keys: accounts,
             data: Buffer.from(data),
-            programId: TOKEN_PROGRAM_ID,
+            programId: TOKEN_2022_PROGRAM_ID,
           }),
-          TOKEN_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
         )
 
         const tokenAmount = tokenMint

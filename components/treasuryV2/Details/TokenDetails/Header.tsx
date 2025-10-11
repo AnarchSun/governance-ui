@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import cx from 'classnames'
 import { DocumentDuplicateIcon, PlusCircleIcon, ReplyIcon } from '@heroicons/react/outline'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   Token as SplToken,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import { PublicKey } from '@solana/web3.js'
 
@@ -45,8 +45,8 @@ export default function Header(props: Props) {
 
       if (mint) {
         SplToken.getAssociatedTokenAddress(
-          ASSOCIATED_TOKEN_PROGRAM_ID,
-          TOKEN_PROGRAM_ID,
+          ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
           mint,
           new PublicKey(props.wallet.address),
           true,

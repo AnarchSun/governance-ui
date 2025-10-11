@@ -6,7 +6,7 @@ import useGovernanceAssets from 'hooks/useGovernanceAssets'
 import GovernedAccountSelect from '../GovernedAccountSelect'
 import {validateInstruction} from 'utils/instructionTools'
 import {AccountType, AssetAccount} from '@utils/uiTypes/assets'
-import {Token, TOKEN_PROGRAM_ID} from '@solana/spl-token'
+import {Token, TOKEN_2022_PROGRAM_ID} from '@solana/spl-token'
 import Switch from '@components/Switch'
 import Input from '@components/inputs/Input'
 import {validatePubkey} from '@utils/formValidation'
@@ -57,7 +57,7 @@ const SetMintAuthority = ({
       wallet?.publicKey
     ) {
       const ix = Token.createSetAuthorityInstruction(
-        TOKEN_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
         form.governedAccount.extensions.mint!.publicKey!,
         form.setAuthorityToNone ? null : new PublicKey(form.mintAuthority),
         'MintTokens',

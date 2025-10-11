@@ -1,8 +1,8 @@
 import { Connection, PublicKey, TransactionInstruction } from '@solana/web3.js'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import { BN } from '@coral-xyz/anchor'
 import {
@@ -51,7 +51,7 @@ export const withVoteRegistryWithdraw = async ({
   const clientProgramId = client!.program.programId
 
   const mintInfo = await client.program.provider.connection.getAccountInfo(mintPk)
-  const tokenProgram = mintInfo?.owner.equals(TOKEN_2022_PROGRAM_ID) ? TOKEN_2022_PROGRAM_ID : TOKEN_PROGRAM_ID
+  const tokenProgram = mintInfo?.owner.equals(TOKEN_2022_PROGRAM_ID) ? TOKEN_2022_PROGRAM_ID : TOKEN_2022_PROGRAM_ID
 
   const { registrar } = getRegistrarPDA(
     realmPk,
@@ -66,7 +66,7 @@ export const withVoteRegistryWithdraw = async ({
   )
 
   const voterATAPk = await Token.getAssociatedTokenAddress(
-    ASSOCIATED_TOKEN_PROGRAM_ID,
+    ASSOCIATED_TOKEN_2022_PROGRAM_ID,
     tokenProgram,
     mintPk,
     voter,
@@ -74,7 +74,7 @@ export const withVoteRegistryWithdraw = async ({
   )
 
   const ataPk = await Token.getAssociatedTokenAddress(
-    ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
+    ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
     tokenProgram,
     mintPk, // mint
     walletPk, // owner
@@ -86,7 +86,7 @@ export const withVoteRegistryWithdraw = async ({
   if (!isExistingAta) {
     instructions.push(
       Token.createAssociatedTokenAccountInstruction(
-        ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
+        ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
         tokenProgram,
         mintPk, // mint
         ataPk, // ata

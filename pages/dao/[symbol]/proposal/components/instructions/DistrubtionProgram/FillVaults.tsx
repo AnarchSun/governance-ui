@@ -24,7 +24,7 @@ import { Keypair, PublicKey, TransactionInstruction } from '@solana/web3.js'
 import { tryGetTokenAccount } from '@utils/tokens'
 import Button from '@components/Button'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
 
   Token,
   u64,
@@ -190,7 +190,7 @@ const FillVaults = ({
                         TOKEN_2022_PROGRAM_ID.toBuffer(),
                         new PublicKey(fromNft!.id).toBuffer(),
                       ],
-                      ASSOCIATED_TOKEN_PROGRAM_ID
+                      ASSOCIATED_TOKEN_2022_PROGRAM_ID
                   )[0],
               to: v.publicKey,
               amount: '',

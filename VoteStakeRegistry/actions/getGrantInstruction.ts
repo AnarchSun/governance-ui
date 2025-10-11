@@ -8,9 +8,9 @@ import {
   LockupType,
 } from 'VoteStakeRegistry/sdk/accounts'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import { VsrClient } from 'VoteStakeRegistry/sdk/client'
 import { fmtDecimalToBN } from '@utils/formatting'
@@ -54,7 +54,7 @@ export const getGrantInstruction = async ({
   const mintInfo = await client?.program.provider.connection.getAccountInfo(grantMintPk)
   const tokenProgram = mintInfo?.owner.equals(TOKEN_2022_PROGRAM_ID)
     ? TOKEN_2022_PROGRAM_ID
-    : TOKEN_PROGRAM_ID
+    : TOKEN_2022_PROGRAM_ID
 
   const { registrar } = getRegistrarPDA(
     realmPk,
@@ -68,7 +68,7 @@ export const getGrantInstruction = async ({
     clientProgramId,
   )
   const voterATAPk = await Token.getAssociatedTokenAddress(
-    ASSOCIATED_TOKEN_PROGRAM_ID,
+    ASSOCIATED_TOKEN_2022_PROGRAM_ID,
     tokenProgram,
     grantMintPk,
     voter,
@@ -98,7 +98,7 @@ export const getGrantInstruction = async ({
       payer: toPk,
       systemProgram: systemProgram,
       tokenProgram,
-      associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+      associatedTokenProgram: ASSOCIATED_TOKEN_2022_PROGRAM_ID,
       rent: SYSVAR_RENT_PUBKEY,
     })
     .instruction()

@@ -1,4 +1,4 @@
-import { Token, TOKEN_PROGRAM_ID, u64 } from '@solana/spl-token'
+import { Token, TOKEN_2022_PROGRAM_ID, u64 } from '@solana/spl-token'
 import { TOKEN_2022_PROGRAM_ID } from '@solana/spl-token-new'
 import { PublicKey, TransactionInstruction } from '@solana/web3.js'
 
@@ -14,7 +14,7 @@ export const withMintTo = async (
     amount: number | u64,
     useToken2022 = false,
 ) => {
-    const programId = useToken2022 ? TOKEN_2022_PROGRAM_ID : TOKEN_PROGRAM_ID
+    const programId = useToken2022 ? TOKEN_2022_PROGRAM_ID : TOKEN_2022_PROGRAM_ID
 
     instructions.push(
         Token.createMintToInstruction(

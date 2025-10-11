@@ -25,7 +25,7 @@ import { Keypair, PublicKey, TransactionInstruction } from '@solana/web3.js'
 import { tryGetTokenAccount } from '@utils/tokens'
 import Button from '@components/Button'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
 
   Token,
 } from '@solana/spl-token'
@@ -89,7 +89,7 @@ const CloseVaults = ({
 
       for (const v of Object.values(vaults)) {
         const ataAddress = await Token.getAssociatedTokenAddress(
-            ASSOCIATED_TOKEN_PROGRAM_ID,
+            ASSOCIATED_TOKEN_2022_PROGRAM_ID,
             TOKEN_2022_PROGRAM_ID,
             v.mint,
             form.governedAccount.extensions.transferAddress!,
@@ -100,7 +100,7 @@ const CloseVaults = ({
         if (!depositAccountInfo && !mintsOfCurrentlyPushedAtaInstructions.includes(v.mint.toBase58())) {
           prerequisiteInstructions.push(
               Token.createAssociatedTokenAccountInstruction(
-                  ASSOCIATED_TOKEN_PROGRAM_ID,
+                  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
                   TOKEN_2022_PROGRAM_ID,
                   v.mint,
                   ataAddress,

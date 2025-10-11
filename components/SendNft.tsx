@@ -29,8 +29,8 @@ import useWalletOnePointOh from '@hooks/useWalletOnePointOh'
 import { useRealmQuery } from '@hooks/queries/realm'
 import NFTAccountSelect from './TreasuryAccount/NFTAccountSelect'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
-  TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   Token,
 } from '@solana/spl-token'
 import { createIx_transferNft } from '@utils/metaplex'
@@ -127,8 +127,8 @@ const SendNft = ({
           }
         } else {
           const destinationAtaPk = await Token.getAssociatedTokenAddress(
-            ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-            TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+            ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+            TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
             nftMint, // mint
             toOwner, // owner
             true,
@@ -163,8 +163,8 @@ const SendNft = ({
               destinationAtaQueried === null
                 ? [
                     Token.createAssociatedTokenAccountInstruction(
-                      ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-                      TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+                      ASSOCIATED_TOKEN_2022_PROGRAM_ID, // always ASSOCIATED_TOKEN_2022_PROGRAM_ID
+                      TOKEN_2022_PROGRAM_ID, // always TOKEN_2022_PROGRAM_ID
                       nftMint, // mint
                       destinationAtaPk, // ata
                       toOwner, // owner of token account

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   serializeInstructionToBase64,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-governance'
 import {
   Keypair,
@@ -119,7 +119,7 @@ export async function getConfigInstruction({
         newAccountPubkey: helperTokenAccount.publicKey,
         lamports: rent,
         space: space,
-        programId: TOKEN_PROGRAM_ID,
+        programId: TOKEN_2022_PROGRAM_ID,
       }),
       //initialized account with same mint as base
       initializeAccount({
@@ -135,7 +135,7 @@ export async function getConfigInstruction({
       //transfer funds from base treasury to the helper checking account
       serializeInstructionToBase64(
         Token.createTransferInstruction(
-          TOKEN_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
           form.baseTreasury.extensions.transferAddress!,
           helperTokenAccount.publicKey,
           //owner is sol wallet or governance same as baseTokenAccount
@@ -312,7 +312,7 @@ export async function getConfigGsoInstruction({
         newAccountPubkey: helperTokenAccount.publicKey,
         lamports: rent,
         space: space,
-        programId: TOKEN_PROGRAM_ID,
+        programId: TOKEN_2022_PROGRAM_ID,
       }),
       //initialized account with same mint as base
       initializeAccount({
@@ -328,7 +328,7 @@ export async function getConfigGsoInstruction({
       //transfer funds from base treasury to the helper checking account
       serializeInstructionToBase64(
         Token.createTransferInstruction(
-          TOKEN_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
           form.baseTreasury.extensions.transferAddress!,
           helperTokenAccount.publicKey,
           //owner is sol wallet or governance same as baseTreasury
@@ -512,7 +512,7 @@ export async function getExerciseInstruction({
         newAccountPubkey: quoteHelperTokenAccount.publicKey,
         lamports: rent,
         space: space,
-        programId: TOKEN_PROGRAM_ID,
+        programId: TOKEN_2022_PROGRAM_ID,
       }),
       initializeAccount({
         account: quoteHelperTokenAccount.publicKey,
@@ -529,7 +529,7 @@ export async function getExerciseInstruction({
     additionalSerializedInstructions.push(
       serializeInstructionToBase64(
         Token.createTransferInstruction(
-          TOKEN_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
           form.quoteTreasury!.extensions.transferAddress!,
           quoteHelperTokenAccount.publicKey,
           form.quoteTreasury!.extensions!.token!.account.owner,
@@ -641,7 +641,7 @@ export async function getWithdrawInstruction({
           newAccountPubkey: helperTokenAccount.publicKey,
           lamports: rent,
           space: space,
-          programId: TOKEN_PROGRAM_ID,
+          programId: TOKEN_2022_PROGRAM_ID,
         }),
         //initialized account with same mint as base
         initializeAccount({
@@ -663,7 +663,7 @@ export async function getWithdrawInstruction({
           newAccountPubkey: helperTokenAccount2.publicKey,
           lamports: rent,
           space: space,
-          programId: TOKEN_PROGRAM_ID,
+          programId: TOKEN_2022_PROGRAM_ID,
         }),
         //initialized account with same mint as quote
         initializeAccount({
@@ -825,7 +825,7 @@ export async function getConfigLsoInstruction({
         newAccountPubkey: helperTokenAccount.publicKey,
         lamports: rent,
         space: space,
-        programId: TOKEN_PROGRAM_ID,
+        programId: TOKEN_2022_PROGRAM_ID,
       }),
       //initialized account with same mint as base
       initializeAccount({
@@ -841,7 +841,7 @@ export async function getConfigLsoInstruction({
       //transfer funds from base treasury to the helper checking account
       serializeInstructionToBase64(
         Token.createTransferInstruction(
-          TOKEN_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
           form.baseTreasury.extensions.transferAddress!,
           helperTokenAccount.publicKey,
           //owner is sol wallet or governance same as baseTokenAccount

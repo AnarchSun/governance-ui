@@ -9,10 +9,10 @@ import {
   TokenOwnerRecord,
 } from '@solana/spl-governance'
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  ASSOCIATED_TOKEN_2022_PROGRAM_ID,
   NATIVE_MINT,
   Token,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
 } from '@solana/spl-token'
 import { Keypair, PublicKey, SystemProgram } from '@solana/web3.js'
 import {
@@ -272,16 +272,16 @@ export async function handleSolendAction(
     connection.cluster === 'mainnet' ? MAINNET_PROGRAM : DEVNET_PROGRAM
 
   const ctokenATA = await Token.getAssociatedTokenAddress(
-    ASSOCIATED_TOKEN_PROGRAM_ID,
-    TOKEN_PROGRAM_ID,
+    ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+    TOKEN_2022_PROGRAM_ID,
     new PublicKey(form.reserve.collateralMintAddress),
     owner,
     true,
   )
 
   const liquidityATA = await Token.getAssociatedTokenAddress(
-    ASSOCIATED_TOKEN_PROGRAM_ID,
-    TOKEN_PROGRAM_ID,
+    ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+    TOKEN_2022_PROGRAM_ID,
     new PublicKey(form.reserve.mintAddress),
     owner,
     true,
@@ -295,8 +295,8 @@ export async function handleSolendAction(
     if (!depositAccountInfo) {
       // generate the instruction for creating the ATA
       createAtaInst = Token.createAssociatedTokenAccountInstruction(
-        ASSOCIATED_TOKEN_PROGRAM_ID,
-        TOKEN_PROGRAM_ID,
+        ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
         new PublicKey(form.reserve.collateralMintAddress),
         ctokenATA,
         owner,
@@ -309,8 +309,8 @@ export async function handleSolendAction(
     if (!withdrawAccountInfo && !isSol) {
       // generate the instruction for creating the ATA
       createAtaInst = Token.createAssociatedTokenAccountInstruction(
-        ASSOCIATED_TOKEN_PROGRAM_ID,
-        TOKEN_PROGRAM_ID,
+        ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID,
         matchedTreasury.extensions.token!.publicKey,
         liquidityATA,
         owner,
@@ -364,7 +364,7 @@ export async function handleSolendAction(
     setupInsts.push(transferLamportInst)
 
     const closeWSOLAccountIx = Token.createCloseAccountInstruction(
-      TOKEN_PROGRAM_ID,
+      TOKEN_2022_PROGRAM_ID,
       liquidityATA,
       owner,
       owner,
@@ -398,8 +398,8 @@ export async function handleSolendAction(
     } else {
       const createUserWSOLAccountIx =
         Token.createAssociatedTokenAccountInstruction(
-          ASSOCIATED_TOKEN_PROGRAM_ID,
-          TOKEN_PROGRAM_ID,
+          ASSOCIATED_TOKEN_2022_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
           NATIVE_MINT,
           liquidityATA,
           owner,

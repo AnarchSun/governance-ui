@@ -4,7 +4,7 @@ import {
   getNativeTreasuryAddress,
   Governance,
   Realm,
-  TOKEN_PROGRAM_ID,
+  TOKEN_2022_PROGRAM_ID,
   ProgramAccount,
   GovernanceAccountType,
 } from '@realms-today/spl-governance'
@@ -649,7 +649,7 @@ const getTokenAccountsInfo = async (
     )
   }
 
-  if (programId.equals(TOKEN_PROGRAM_ID)) {
+  if (programId.equals(TOKEN_2022_PROGRAM_ID)) {
     return tokenAccountsInfoJson.reduce((tokenAccountsInfo, { result }) => {
       result.value.forEach(
         ({
@@ -807,7 +807,7 @@ const loadGovernedTokenAccounts = async (
     await Promise.all(
       // Load infos in batch, cannot load 9999 accounts within one request
       group(tokenAccountOwners, 100).map((group) =>
-        getTokenAccountsInfo(connection, group, TOKEN_PROGRAM_ID),
+        getTokenAccountsInfo(connection, group, TOKEN_2022_PROGRAM_ID),
       ),
     )
   )

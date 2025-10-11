@@ -1,5 +1,5 @@
 import { WSOL_MINT, WSOL_MINT_PK } from '@components/instructions/tools'
-import { TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 import {
   ComputeBudgetProgram,
   Connection,
@@ -32,7 +32,7 @@ export function createChargeFeeIx(
 ) {
   const keys = [
     {
-      pubkey: TOKEN_PROGRAM_ID,
+      pubkey: TOKEN_2022_PROGRAM_ID,
       isWritable: false,
       isSigner: false,
     },
